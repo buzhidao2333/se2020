@@ -36,7 +36,7 @@ long double fsin( double x)
         t=(pow(x,(2*i+1)))/fac(2*i+1);
         temp+=pow(-1,i)*t;
         i++;
-        //printf("%.5lf\n",temp);
+        
     }
     return temp;
 }
