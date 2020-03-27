@@ -40,16 +40,43 @@ long double fsin( double x)
     }
     return temp;
 }
+
+
+long double ftan( double x)
+{
+   long  double temp=0.0;
+   if(x>=pi/2) x=x-pi;
+   if(x!=pi/2)
+   temp= x+pow(x,3)/3+2*pow(x,5)/15+17*pow(x,7)/315+62*pow(x,9)/2835;
+    return temp;
+}
+
+long double fcot( double x)
+{
+   long  double temp=0.0;
+   if(x>=pi) x=x-pi;
+   if((x!=0)&&(x!=pi))
+   temp= 1/x-x/3-pow(x,3)/45-2*pow(x,5)/945;
+    return temp;
+}
 int main()
 {
-    double r,temp;
+    double r;
     printf("请输入弧度值，180°对应3.1415926弧度，以此类推...\n");
     printf("弧度(rad):");
     scanf("%lf",&r);
-    temp=fcos(r);
-    printf("fcos=%.5lf\n",temp);
-    printf("cos=%.51f \n",cos(r));//用系统函数进行对比
+    printf("fcos=%.5lf\n",fcos(r));
+    printf("cosx=%.51f \n",cos(r));//用系统函数进行对比
 	printf("fsinx=%.5lf\n",fsin(r));
     printf("sinx=%.51f\n",sin(r));//用系统函数进行对比
-
-}
+	if ((r!=pi/2)&&(r!=3*pi/2))
+	     printf("ftan=%.5lf\n",ftan(r));
+	else 	
+		printf("ftanx:null\n");
+    printf("tanx=%.51f \n",tan(r));//用系统函数进行对比
+    if ((r!=0)&&(r!=pi))
+		 	printf("fcot=%.5lf\n",fcot(r));
+	else 
+		printf("fcotx:null\n");
+    printf("cotx=%.51f \n",cos(r)/sin(r));
+} 
